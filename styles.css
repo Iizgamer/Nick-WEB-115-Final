@@ -22,7 +22,7 @@ h1, p, button {
     display: grid;
     align-items: center;
     grid-template-areas:
-        ". b .";
+        "a b c";
 }
 
 #headerText {
@@ -55,4 +55,26 @@ h1, p, button {
     margin-left: 30%;
     margin-right: 30%;
     font-size: 24px;
+}
+
+#actions {
+    display: none;
+    grid-area: c;
+    text-align: center;
+}
+
+#inventory, #craft, #search {
+    font-size: 24px;
+}
+
+#dayCounter {
+    text-align: center;
+    grid-area: b;
+    font-size: 32px;
+}
+
+#inventoryWindow {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
 }
