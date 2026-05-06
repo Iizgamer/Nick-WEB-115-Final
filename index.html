@@ -15,19 +15,27 @@
 
     <div class="statusContainer">
         <p id="statusText">You rub your head as you wake up. You don't remember anything before this, but from what you can see, you're stranded on a hot, humid, sandy island.</p>
-        <button id="continueTextBtn">Press to Start</button>
+        <button id="continueTextBtn" class="pointer">Press to Start</button>
         <div id="actions">
-            <button id="search">Search</button>
-            <button id="craft">Craft</button>
-            <button id="inventory">Inventory</button>    
+            <button id="search" class="pointer">Search</button>
+            <button id="craft" class="pointer">Craft</button>
+            <button id="inventory" class="pointer">Inventory</button>    
         </div>
 
     </div>
 
-    <div class="inventory">
-        <div id="inventoryWindow">
-            <button>Close</button>
+    <div id="inventoryWindow">
+        <button id="closeInvBtn" class="pointer">X</button>
+        <p id="invDisplay"></p>
+    </div>
+
+    <div id="craftWindow">
+        <button id="closeCraftBtn" class="pointer">X</button>
+        <div id="craftOptions">
+            <div id="knife" class="pointer hideCraft" >Knife<br>1 wood, 1 stone</div>
+            <div id="campfire" class="pointer hideCraft">Campfire<br>2 wood</div>
         </div>
+        <button id="confirmCraft" class="pointer">Craft</button>
     </div>
 </body>
 </html>

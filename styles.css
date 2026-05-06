@@ -14,10 +14,6 @@ body {
     grid-template-rows: repeat(3, 1fr);
 }
 
-h1, p, button {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .headerContainer {
     display: grid;
     align-items: center;
@@ -76,5 +72,54 @@ h1, p, button {
 #inventoryWindow {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 10%; left: 10%; right: 10%; bottom: 10%;
+    background-color: #815438;
+}
+
+#closeInvBtn {
+    position: fixed;
+    top:10%; left: 10%;
+    background-color: red;
+}
+
+#invDisplay {
+    text-align: center;
+    margin: auto;
+}
+
+#craftWindow {
+    display: none;
+    position: fixed;
+    top: 10%; left: 10%; right: 10%; bottom: 10%;
+    background-color: #815438;
+}
+
+#closeCraftBtn {
+    position: fixed;
+    top:10%;left:10%;
+    background-color: red;
+}
+
+#craftDisplay {
+    text-align: center;
+    margin: auto;
+    display: grid;
+}
+
+#confirmCraft {
+    height: 10%;
+    position: fixed;
+    bottom: 10%;
+    width: 80%;
+    font-size: 200%;
+}
+
+#knife, #campfire {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #f39f60;
+}
+
+.hideCraft {
+    display: none;
 }
