@@ -1,11 +1,11 @@
-const continueTextBtn = document.getElementById('continueTextBtn');
-const statusText = document.getElementById('statusText');
-const headerText = document.getElementById('headerText');
-const actions = document.getElementById('actions');
-const dayCounter = document.getElementById('dayCounter');
-const craft = document.getElementById('craft');
-const search = document.getElementById('search');
-const inventory = document.getElementById('inventory');
+const continueTextBtn = document.getElementById('continueTextBtn'); // button to continue text
+const statusText = document.getElementById('statusText'); // text in the middle
+const headerText = document.getElementById('headerText'); // text on the top
+const actions = document.getElementById('actions'); // actions div with crafting, inventory, and searching
+const dayCounter = document.getElementById('dayCounter'); // day counter.
+const craft = document.getElementById('craft'); // craft button
+const search = document.getElementById('search'); // search button
+const inventory = document.getElementById('inventory'); // inventory button
 const inventoryWindow = document.getElementById('inventoryWindow');
 const closeInvBtn = document.getElementById('closeInvBtn');
 const invDisplay = document.getElementById('invDisplay');
@@ -15,6 +15,8 @@ const closeCraftBtn = document.getElementById('closeCraftBtn');
 const pointer = document.getElementsByClassName('pointer');
 const knife = document.getElementById('knife');
 const campfire = document.getElementById('campfire');
+const confirmCraft = document.getElementById('confirmCraft');
+let craftSelect;
 let searchLvl = 1;
 let craftLvl = 1;
 let btnCount = 0;
@@ -72,8 +74,59 @@ craft.addEventListener('click', ()=>{
 
 closeCraftBtn.addEventListener('click', () => {
     craftWindow.style.display = 'none';
+    craftSelect = '';
 })
 
 for (i=0; i<pointer.length; i++) {
     pointer[i].style.cursor = "pointer";
 }
+
+knife.addEventListener('click', () => {
+    craftSelect = 'knife';
+})
+
+campfire.addEventListener('click', () => {
+    craftSelect = 'campfire';
+})
+
+confirmCraft.addEventListener('click', () => {
+    let tempInvList = invList;
+    if (craftSelect == 'knife') {
+        if (invList.includes('wood') && invList.includes('stone')) {
+            var index = invList.indexOf('wood');
+            if (index !== -1) {
+                invList.splice(index, 1);
+            }
+            var index = invList.indexOf('stone');
+            if (index !== -1) {
+                invList.splice(index, 1)
+            }
+            knife.style.display = 'none';
+            invList.push('knife');
+        } else {
+            window.alert('You do not have enough materials!')
+        }
+    } else if (craftSelect == 'campfire') {
+        var index = tempInvList.indexOf('wood')
+        if (index !== -1) {
+            tempInvList.splice(index, 1);
+        }
+        if (tempInvList.includes('wood')) {
+            var index = invList.indexOf('wood')
+            if (index !== -1) {
+                invList.splice(index, 1);
+            }
+            var index = invList.indexOf('wood')
+            if (index !== -1) {
+                invList.splice(index, 1);
+            }
+            campfire.style.display = 'none';
+            invList.push('campfire');
+        } else {
+            window.alert('You do not have enough materials!')
+        }
+    } else {
+        window.alert('You must have something selected!')
+    }
+    craftSelect = ''
+})
