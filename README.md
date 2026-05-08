@@ -2,7 +2,7 @@
 
 # Text-based Survival-RPG Game
 **WEB-115 Final Project Proposal**
-Student: Nicholas Foles | Repo: `WEB-115_FinalProject_Foles`
+Student: Nicholas Foles | Repo: `WEB-115_FinalProject_Foles` | Live Site: `https://iizgamer.github.io/WEB-115_FinalProject_Foles/`
 
 ---
 
