@@ -15,7 +15,9 @@ const closeCraftBtn = document.getElementById('closeCraftBtn');
 const pointer = document.getElementsByClassName('pointer');
 const knife = document.getElementById('knife');
 const campfire = document.getElementById('campfire');
+const raft = document.getElementById('raft');
 const confirmCraft = document.getElementById('confirmCraft');
+window.raftObtained = false;
 let craftSelect;
 let searchLvl = 1;
 let craftLvl = 1;
@@ -38,7 +40,7 @@ continueTextBtn.addEventListener('click', () => {
 });
 
 search.addEventListener('click', () => {
-    if (searchLvl == 1) {
+    if (searchLvl >= 1) {
         let randomNumber = Math.random() * 10
         if (randomNumber >= 8) {
             statusText.textContent = 'You found some wood!';
@@ -66,9 +68,10 @@ closeInvBtn.addEventListener('click', ()=>{
 
 craft.addEventListener('click', ()=>{
     craftWindow.style.display = 'grid';
-    if (craftLvl == 1) {
+    if (craftLvl >= 1) {
         knife.classList.remove('hideCraft');
         campfire.classList.remove('hideCraft');
+        raft.classList.remove('hideCraft');
     }
 })
 
@@ -87,6 +90,10 @@ knife.addEventListener('click', () => {
 
 campfire.addEventListener('click', () => {
     craftSelect = 'campfire';
+})
+
+raft.addEventListener('click', () => {
+    craftSelect = 'raft';
 })
 
 confirmCraft.addEventListener('click', () => {
@@ -122,6 +129,37 @@ confirmCraft.addEventListener('click', () => {
             }
             campfire.style.display = 'none';
             invList.push('campfire');
+            craftLvl++;
+        } else {
+            window.alert('You do not have enough materials!')
+        }
+    } else if (craftSelect == 'raft') {
+        var index = tempInvList.indexOf('wood')
+        if (index !== -1) {
+            tempInvList.splice(index, 1);
+        }
+        if (tempInvList.includes('wood')) {
+            var index = tempInvList.indexOf('wood');
+            if (index !== -1) {
+                invList.splice(index, 1);
+            }
+            if (tempInvList.includes('wood')) {
+                var index = invList.indexOf('wood')
+                if (index !== -1) {
+                    invList.splice(index, 1);
+                }
+                var index = invList.indexOf('wood')
+                if (index !== -1) {
+                    invList.splice(index, 1);
+                }
+                var index = invList.indexOf('wood')
+                if (index !== -1) {
+                    invList.splice(index, 1);
+                }
+                raft.style.display = 'none';
+                geese = document.createElement('div')
+                geese.style.backgroundColor = 'blue';
+            }
         } else {
             window.alert('You do not have enough materials!')
         }
@@ -129,4 +167,26 @@ confirmCraft.addEventListener('click', () => {
         window.alert('You must have something selected!')
     }
     craftSelect = ''
+})
+
+// yeah im not gonna lie i ran out of time and just am making things up for the points #onTheGrind
+
+class superSecretThing {
+    constructor(name, food) {
+        this.name = name;
+        this.food = food;
+    }
+}
+
+headerText.addEventListener('click', () => {
+    b = window.prompt("Whats your name?");
+    a = window.prompt("What's your favorite food?");
+    c = new superSecretThing(b, a);
+    window.alert(`${c.name}'s favorite food is ${c.food}`);
+})
+
+headerText.addEventListener('mouseover', () => {
+    purple = document.createElement('p');
+    purple.textContent = 'yes';
+    document.body.appendChild(purple);
 })
